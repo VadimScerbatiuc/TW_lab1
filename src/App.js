@@ -1,14 +1,17 @@
 import logo from './logo.svg';
 import './App.css';
 import 'antd/dist/antd.css';
-import Fcomponent from './Fcomponent';
+import React , { useEffect } from 'react'
 import {Layout} from 'antd'
 import {MenuLayout} from './MenuLayout'
 import {HeaderLayout} from './HeaderLayout'
 import {ContentLayout} from './ContentLayout'
 import {FooterLayout} from './FooterLayout'
+import {funtionexample} from './functions'
 
 function App() {
+
+
   return (
     
     <Layout >
