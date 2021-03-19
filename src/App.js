@@ -8,21 +8,44 @@ import {HeaderLayout} from './HeaderLayout'
 import {ContentLayout} from './ContentLayout'
 import {FooterLayout} from './FooterLayout'
 import {funtionexample} from './functions'
+import { home_path, about_path, users_path } from './constants'
+import {About } from "./About";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 function App() {
 
 
   return (
-    
-    <Layout >
-        <MenuLayout/>
-        <HeaderLayout/>
-      <Layout className="site-layout" style={{ marginLeft: 200 }}>
-          <ContentLayout/>
-          <FooterLayout/>
-      </Layout>
-    </Layout>
+    <>
+      <Router>
+        <Layout >
+            <MenuLayout/>
+            <HeaderLayout/>
+          <Layout className="site-layout" style={{ marginLeft: 200 }}>
+             
+              <FooterLayout/>
+          </Layout>
+        </Layout>
 
+        <Switch>
+          <Route path={home_path}>
+          <ContentLayout/>
+          </Route>
+          <Route path={about_path}>
+           <About/>
+          </Route>
+          <Route path={users_path}>
+           
+          </Route>
+        </Switch>
+
+      </Router>
+    </>
   );
 }
 

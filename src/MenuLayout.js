@@ -1,11 +1,14 @@
-import {UserOutlined,VideoCameraOutlined,UploadOutlined,BarChartOutlined,CloudOutlined,AppstoreOutlined,TeamOutlined,ShopOutlined} from '@ant-design/icons'
 import React from 'react'
 import { Layout , Menu} from 'antd'
-// import {Userss} from './ContentLayout'
-// import {Aboutt} from './ContentLayout'
-// import {Homee} from './ContentLayout'
-import { ContentLayout } from './ContentLayout'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
+import { ContentLayout } from './ContentLayout'
+import { MenuRoot } from './constants'
 const {Sider} =Layout
 
 
@@ -13,6 +16,7 @@ export const MenuLayout = () =>{
   
 
       return(
+        <>
             <Sider
             style={{
               overflow: 'auto',
@@ -22,26 +26,26 @@ export const MenuLayout = () =>{
             }}
           >
             <div className="logo" />
-            <Menu theme="dark" mode="inline" >
-              
-              
-              <Menu.Item key="1" icon={<UserOutlined />}  >
-              Home
-              </Menu.Item>
-              
-              
-              <Menu.Item key="2" icon={<VideoCameraOutlined />} >
-                Aboute
-              </Menu.Item>
-              
-              
-              <Menu.Item key="3" icon={<UploadOutlined />} >
-                Users
-              </Menu.Item>
+              <Switch>
+                <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']} >
+                  
+                    {MenuRoot.map((menu) =>{
+                      return(
 
-            </Menu>
+                    <Menu.Item key={ menu.id } icon= {menu.icon}>
+                      <Link to={menu.path}>{menu.name}</Link>
+                    </Menu.Item>
+                
+                    );
+
+                    } )}
+
+                </Menu>
+              </Switch>
           </Sider>
-        )
+          
+          </>
+          )
 
 }
 
